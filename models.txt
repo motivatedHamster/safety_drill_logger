@@ -1,0 +1,23 @@
+models:
+
+Classrooms
+  has_many :drills, dependent: :destroy
+  belongs_to :teacher
+
+Teachers
+  has_many :classrooms
+  has_many :drills
+
+DrillTypes
+  has_many :drills
+
+Drills
+  belongs_to :classroom
+  belongs_to :teacher
+  belongs_to :drill_type
+
+
+notes:
+
+fire drill is 1x/month for 3 classes, 1/quarter for 1 class
+earthquake drill is once per each half year
