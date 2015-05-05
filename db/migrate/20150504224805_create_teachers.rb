@@ -6,6 +6,5 @@ class CreateTeachers < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index :teachers, :name, unique: true
   end
 end
