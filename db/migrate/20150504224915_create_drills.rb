@@ -1,7 +1,7 @@
 class CreateDrills < ActiveRecord::Migration
   def change
     create_table :drills do |t|
-      t.date :date_performed
+      t.date :date_performed, null: false
       t.references :teacher, index: true
       t.references :classroom, index: true
       t.references :drill_type, index: true

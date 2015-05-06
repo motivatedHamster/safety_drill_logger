@@ -1,7 +1,7 @@
 class CreateClassrooms < ActiveRecord::Migration
   def change
     create_table :classrooms do |t|
-      t.string :name, limit: 255
+      t.string :name, limit: 255, null: false
       t.references :teacher, index: true
 
       t.timestamps null: false
