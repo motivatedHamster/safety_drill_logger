@@ -1,6 +1,8 @@
 class Classroom < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true, length: { maximum: 255, too_long: "%{count} characters maximum" }
   has_many :drills, dependent :destroy
+  # connecting classrooms directly to drill_types to allow for different drill_type attributes per classroom
+  # ex: one classroom only has to perform fire drills quarterly while the other classrooms have to perform them monthly
   has_many :drill_types, dependent :destroy
   belongs_to :teacher
 
