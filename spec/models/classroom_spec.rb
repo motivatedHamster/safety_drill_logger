@@ -1,5 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Classroom, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has a name" do
+    expect(subject).to have_attribute(:name)
+  end
+  
+  it "is valid with a name" do 
+    classroom = Classroom.new(name: "some_classroom")
+    expect(classroom).to be_valid
+  end
+
+  it "is invalid with a name longer than 255 characters" do
+    classroom = Classroom.new(name: "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456")
+    expect(classroom).to_not be_valid
+  end
+  
+  it "belongs to a teacher"
+  it "needs_drill? after creation"
+  it "does not needs_drill? after new drills have been conducted"
+
 end
