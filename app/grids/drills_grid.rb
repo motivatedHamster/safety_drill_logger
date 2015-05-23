@@ -2,14 +2,14 @@ class DrillsGrid
 
   include Datagrid
 
-  scope do
-    Drill
-  end
-  
 #  scope do
-#    Drill.select(
-#      "drills.date_performed, classrooms.name as classroom_name")
+#    Drill
 #  end
+  
+  scope do
+    Drill.select(
+      "drills.date_performed, drills.created_at, drills.id, classrooms.name as classroom_name, teachers.name as teacher_name, teachers.email as teacher_email, drill_types.name as drill_name, drill_types.required_frequency as drill_frequency" ).joins(:classroom, :teacher, :drill_type)
+  end
 
   filter(:id, :integer)
   filter(:created_at, :date, :range => true)
@@ -22,23 +22,19 @@ class DrillsGrid
   # :date_performed
   column(:date_performed)
   # class name
-  column(:classroom) do |some_classroom|
-    some_classroom.name
-  end
+  column(:classroom_name)
   # teacher name
-#  column(:teacher) do |some_teacher|
-#    some_teacher.name
-#  end
+  column(:teacher_name)
   # teacher email
-#  column(:teacher) do |some_teacher|
-#    some_teacher.email
-#  end
+  column(:teacher_email)
   # drill_type name
 #  column(:drill_type) do |some_drill_type|
 #    some_drill_type.name
 #  end
+  column(:drill_name)
   # drill_type required frequency
 #  column(:drill_type) do |some_drill_type|
 #    some_drill_type.required_frequency
 #  end
+  column(:drill_frequency)
 end  # class DrillsGrid
