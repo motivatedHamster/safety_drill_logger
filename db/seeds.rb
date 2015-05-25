@@ -30,9 +30,16 @@ dtype_quake_discoverers = DrillType.create name: "earthquake", required_frequenc
 # Drill.create date_performed: Date::strptime("", "%m-%d-%Y"), teacher: teacher_, classroom: class_, drill_type: dtype_
 Drill.create date_performed: Date::strptime("04-22-2015", "%m-%d-%Y"), teacher: teacher_patty, classroom: class_discoverers, drill_type: dtype_fire_discoverers
 
+Drill.create date_performed: Date::strptime("09-23-2014", "%m-%d-%Y"), teacher: teacher_patty, classroom: class_discoverers, drill_type: dtype_quake_discoverers
+
 Drill.create date_performed: Date::strptime("04-27-2015", "%m-%d-%Y"), teacher: teacher_jess, classroom: class_imagineers, drill_type: dtype_fire_imagineers
+
+Drill.create date_performed: Date::strptime("09-23-2014", "%m-%d-%Y"), teacher: teacher_jess, classroom: class_imagineers, drill_type: dtype_quake_imagineers
 
 Drill.create date_performed: Date::strptime("04-27-2015", "%m-%d-%Y"), teacher: teacher_jess, classroom: class_inventors, drill_type: dtype_fire_inventors
 
+Drill.create date_performed: Date::strptime("09-23-2014", "%m-%d-%Y"), teacher: teacher_jess, classroom: class_inventors, drill_type: dtype_quake_inventors
+
 Drill.create date_performed: Date::strptime("04-29-2015", "%m-%d-%Y"), teacher: teacher_jess, classroom: class_adventurers, drill_type: dtype_fire_adventurers
 
+Drill.create date_performed: Date::strptime("09-23-2014", "%m-%d-%Y"), teacher: teacher_jess, classroom: class_adventurers, drill_type: dtype_quake_adventurers
