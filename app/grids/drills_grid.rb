@@ -34,14 +34,22 @@ class DrillsGrid
 #  ) do |value|
 #    self.where(:drills => {:drill_type_id => value})
 #  end
-
-  filter(:drill_type_id, :enum,
-    :select => lambda { DrillType.all.map {|d| [d.name, d.id]} },
+  
+  filter(:drill_type_id, :enum, 
+    :select => DrillType.select(:name).distinct.map {|d| d.name},
     :multiple => true,
     :include_blank => false
   ) do |value|
-    self.where(:drills => {:drill_type_id => value})
+      self.where(:drill_types => {:name => value})
   end
+
+#  filter(:drill_type_id, :enum,
+#    :select => lambda { DrillType.all.map {|d| [d.name, d.id]} },
+#    :multiple => true,
+#    :include_blank => false
+#  ) do |value|
+#    self.where(:drills => {:drill_type_id => value})
+#  end
 
   column(:id)
   column(:created_at) do |model|
