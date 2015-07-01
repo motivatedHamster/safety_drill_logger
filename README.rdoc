@@ -1,27 +1,47 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Perhaps we could keep a running status and to-do list here?
 
-Things you may want to cover:
-
-* Ruby version
+* Ruby version - I believe this was originally built on 2.2.0p0
 
 * System dependencies
 
 * Configuration
 
-* Database creation
+* Database creation - should shift this to postgres ASAP if it's not already there
 
 * Database initialization
 
-* How to run the test suite
+* How to run the test suite - current tests are in spec/models
 
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
 
 * ...
+
+TODO:
+
+* Allow date to be undefined for drill model.  Currently drills need a date but I think it would be better to have drills before we know an end date.
+* might also add some flag to drill model to indicate if classroom is full or empty for a given quarter.  If classroom is empty then a drill doesn't need to be performed & shouldn't trigger any sort of warning.
+
+* Should be some automated task to create new drills based on current date.  Could have 2 sets of drills created in advance?
+
+* Some functionality to prompt the user to enter start/end dates for each quarter (as the dates become known) and apply those dates to the correct drills.
+
+* still working out user model, can anyone log in? (I think no)  do we need an admin? (I think maybe)  so far I have:
+  * users should be able to:
+    * get list of all classrooms/drills.
+    * create/edit/delete users.
+    * trigger sending emails individually or to all users
+    * enter upcoming dates for quarter start/end and specify if classes will be full/empty for a given quarter.
+    * create/edit/delete classrooms - NOTE: be nice if classrooms have a 'deleted' flag and never actually be deleted by regular user
+    * create/edit/delete drill_types, maybe on same page as classrooms, with implicit connection to current classroom
+
+* need to build an email that lists all drills along with current deadlines for each & link to main page
+  * need to also prompt for drills that are missing dates and full/empty info
+
+* do we need to link user accounts to a specific teacher model?  I think no.
 
 
 Please feel free to use a different markup language if you do not plan to run
