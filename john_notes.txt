@@ -1,0 +1,133 @@
+rails new safety_drill_logger
+gem install rspec
+bundle install (probably not necessary)
+edited Gemfile to include:
+	gem 'rspec'
+bundle install
+rspec --init
+
+rails g model drill_type name:string{255}:uniq required_frequency:string{255}
+rails g model teacher name:string{255} email:string{255}
+rails g model classroom name:string{255}:uniq teacher:references
+rails g model drill date_performed:date teacher:references classroom:references drill_type:references
+
+rails destroy model drill_type
+rails g model drill_type name:string{255} required_frequency:string{255}
+...rebuilt models to remove 'uniq'
+
+edited Gemfile, changed "gem 'rspec'" to "gem 'rspec-rails'"
+bundle install
+rails generate rspec:install
+rails generate rspec:model classroom
+rails generate rspec:model drill_type
+rails generate rspec:model drill
+rails generate rspec:model teacher
+
+256 char email address:
+A2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345@domain.foo
+
+256 char string:
+1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456
+
+Attempting to add devise for user authentication:
+rails g model user
+error:
+/home/action/.gem/ruby/2.1.1/gems/bundler-1.6.2/lib/bundler/runtime.rb:34:in `block in setup': You have already activated spring 1.3.6, but your Gemfile
+ requires spring 1.3.5. Prepending `bundle exec` to your command may solve this. (Gem::LoadError)
+
+commented out 'spring' in Gemfile, ran 'bundle', uncommented 'spring' in Gemfile, ran 'bundle' again
+rails g model user
+success!
+
+added gem 'devise' to Gemfile
+bundle install
+rails g devise:install
+
+per devise default message, added home#index to root route
+per devise default message, added flash messages to app/views/layouts/application.html.erb
+
+merge OK from Mel:
+create a page with all the upcoming drills (include what classroom they're for, what kind of drill, etc).
+  you'll need to seed data for this.
+  make it so you can filter on this page by teacher and drill type. 
+  here are some gems that might be helpful: https://www.ruby-toolbox.com/categories/Table_Builders
+
+merged models -> master, new branch views
+
+Zebra.create weight: 90
+
+classroom: name:
+adventurers
+discoverers
+imagineers
+inventors
+
+drill_type
+fire - adv=1/quarter, everyone else 1/month
+earthquake - 2x/yr all classes
+
+last fall quarter started 9/3/2014, ended 11/21/2014
+last winter quarter started 11/24/2014, ended 3/3/2014
+spring quarter started 3/4/2014, ended 5/22/2015
+summer quarter drills aren't tracked summer quarter
+next fall quarter no start date yet
+
+earthquake drills recommended in Oct & Mar
+deadline is roughly end of Nov & end of April
+
+drill
+teacher:
+Jess G
+Patty
+
+last week april mon jess fire drill imagineers
+last week april mon jess fire drill inventors
+last week april wed jess fire drill adventurers
+previous wed, patty fire drill discoverers
+side note:
+	converted = Date::strptime(testdate, "%d-%m-%Y")
+
+added above to seeds.rb
+
+rake db:seed
+error:
+Unable to autoload constant Drill_type, expected /home/action/workspace/ruby210/safety_drill_logger/app/models/drill_type.rb to define it
+
+possibly due to using "Drill_type.create" in seeds.rb, changing to "DrillType.create"
+rake db:seed
+seems to have worked?  :)
+
+git branch views
+git branch views_datagrid
+
+added "gem 'datagrid'" to Gemfile
+bundle install
+
+trying below per: https://github.com/bogdan/datagrid/wiki/Frontend 
+	"rails generate datagrid:scaffold <model in plural>"
+
+rails generate datagrid:scaffold drills
+console appears to be locked, 20 min
+restarting machine
+
+gem install datagrid -v 1.3.7
+"1 gem installed"
+
+rails generate datagrid:scaffold drills
+appears to have worked!
+      create  app/grids/drills_grid.rb                                                                                               
+      create  app/controllers/drills_controller.rb                                                                                   
+      create  app/views/drills/index.html.erb                                                                                        
+       route  resources :drills                                                                                                      
+     gemfile  kaminari                                                                                                               
+      insert  app/assets/stylesheets/application.css
+
+getting error browsing to /drills/
+	something about no method 'name' in Drill
+	fixed by commenting out a line in /app/grids/drills_grid.rb: # column(:name)
+
+https://github.com/motivatedHamster/safety_drill_logger.git
+
+following tutorial at http://guides.railsgirls.com/devise/
+adding authentication
+fangrock@live.com riteintherain

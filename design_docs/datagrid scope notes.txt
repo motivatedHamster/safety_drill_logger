@@ -1,0 +1,70 @@
+class Account < ActiveRecord::Base 
+	has_many :projects 
+	validates :name, :presence => true, :uniqueness => true 
+end 
+
+class Project < ActiveRecord::Base 
+	belongs_to :account 
+	has_many :time_entries 
+	validates_presence_of :name 
+	validates_presence_of :account 
+end
+
+class TimeEntry < ActiveRecord::Base 
+	belongs_to :user 
+	belongs_to :project 
+	validates_presence_of :user, :project 
+	validates_presence_of :date, :hours 
+end
+
+class User < ActiveRecord::Base 
+	REGISTRATION_TYPES = ["LINKED_IN", "FACEBOOK", "DATAGRID_DEMO"] 
+	has_many :time_entries 
+	validates_presence_of :name, :email, :registered_at  
+	validates_inclusion_of :registration_type, :in => REGISTRATION_TYPES 
+end
+
+User.select(
+      "users.name, projects.name as project_name, accounts.name as account_name, sum(time_entries.hours) as report_hours"
+    ).joins(:time_entries => {:project => :account}).group("projects.name", "users.name", "accounts.name").order("users.name")
+
+filter(:project_id, :enum, 
+    :select => lambda {Project.all.map {|p| [p.name, p.id]}},
+    :multiple => true,
+    :include_blank => false
+  ) do |value|
+    self.where(:time_entries => {:project_id => value})
+end
+
+filter(:year, :enum, 
+    :select => lambda { TimeEntry.all.any? ? (TimeEntry.minimum(:date).year..TimeEntry.maximum(:date).year) : []}, 
+    :include_blank => false, 
+    :default => lambda {Date.today.year}
+  ) do |value|
+    self.where(["extract(year from time_entries.date) = ?", value.to_i])
+end
+
+filter(:drill_type_id, :enum,
+    :select => lambda { DrillType.all.any? ? (DrillType.minimum(:name)..DrillType.maximum(:name)) : []},
+    :multiple => true,
+    :include_blank => false,
+  ) do |value|
+    self.where(drill_types => {drill_id => value})
+end
+
+filter(:classroom_id, :enum,
+    :select => lambda {Classroom.all.map {|c| [c.name, c.id]}},
+    :multiple => true,
+    :include_blank => false
+  ) do |value|
+    self.where(:drills => {:classroom_id => value})
+end
+
+filter(:teacher_id, :enum,
+    :select => lambda {Teacher.all.map {|c| [c.name, c.id]}},
+    :multiple => true,
+    :include_blank => false
+  ) do |value|
+    self.where(:drills => {:teacher_id => value})
+end
+
