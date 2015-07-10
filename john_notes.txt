@@ -49,7 +49,7 @@ per devise default message, added flash messages to app/views/layouts/applicatio
 merge OK from Mel:
 create a page with all the upcoming drills (include what classroom they're for, what kind of drill, etc).
   you'll need to seed data for this.
-  make it so you can filter on this page by teacher and drill type. 
+  make it so you can filter on this page by teacher and drill type.
   here are some gems that might be helpful: https://www.ruby-toolbox.com/categories/Table_Builders
 
 merged models -> master, new branch views
@@ -103,7 +103,7 @@ git branch views_datagrid
 added "gem 'datagrid'" to Gemfile
 bundle install
 
-trying below per: https://github.com/bogdan/datagrid/wiki/Frontend 
+trying below per: https://github.com/bogdan/datagrid/wiki/Frontend
 	"rails generate datagrid:scaffold <model in plural>"
 
 rails generate datagrid:scaffold drills
@@ -115,11 +115,11 @@ gem install datagrid -v 1.3.7
 
 rails generate datagrid:scaffold drills
 appears to have worked!
-      create  app/grids/drills_grid.rb                                                                                               
-      create  app/controllers/drills_controller.rb                                                                                   
-      create  app/views/drills/index.html.erb                                                                                        
-       route  resources :drills                                                                                                      
-     gemfile  kaminari                                                                                                               
+      create  app/grids/drills_grid.rb
+      create  app/controllers/drills_controller.rb
+      create  app/views/drills/index.html.erb
+       route  resources :drills
+     gemfile  kaminari
       insert  app/assets/stylesheets/application.css
 
 getting error browsing to /drills/
@@ -130,4 +130,5 @@ https://github.com/motivatedHamster/safety_drill_logger.git
 
 following tutorial at http://guides.railsgirls.com/devise/
 adding authentication
-fangrock@live.com riteintherain
+
+merged views->master

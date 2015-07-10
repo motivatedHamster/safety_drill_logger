@@ -1,0 +1,77 @@
+story #1 - routine checkup
+
+user Penny Perfect (PP) is a preschool teacher with a BS in developmental
+education.
+
+PP has just taken over a new classroom from a retiring teacher.  PP wants
+to verify the exiting teacher has kept up to date with the WA State required fire and
+earthquake drills.
+
+The exiting teacher has created a user accout for Penny on the safety drill
+logger app (SDL) which triggered an email to PP's gmail account. Penny reads
+the email on her desktop Windows PC (windows 8, latest IE) and clicks on the
+link to access the SDL.
+
+As Penny is not currently logged in, her browser shows the SDL login page.
+PP enters her SDL credentials and gets the drills list page.  She selects
+her classroom's name in the filter, clicks 'search' and sees the list of all
+safety drills performed for her class.  She notes that all drills have been
+completed for the current quarter and closes the browser.
+
+
+story #2 - dates needed warning
+
+user PP
+
+It is September and the new quarter has just started.  PP gets an email from
+SDL warning that no new start & end dates have been set for the current quarter.
+
+PP diligently clicks the link in the email, authenticates with SDL and gets a
+page that prompts her for the start and end dates for the current quarter.  PP
+enters the dates and clicks the 'submit' button.  PP gets the drills list page
+which now includes drills for the current quarter and half that are showing as
+not having a 'Date performed' date.  PP makes a mental note to perform the
+drills soon and closes the browser.
+
+
+story #3 - drill needed warning
+
+user PP
+
+PP has just received an email from SDL warning that the quarter is half over
+and the fire drill has not been performed for her classroom.  Penny clicks the
+link in the email, authenticates at the SDL login page, and gets the drills
+list page.  She filters for her classroom and sees there is both outstanding
+fire and earthquake drills that need to be performed in the current quarter.  PP
+makes a mental note to perform the drills soon and closes the browser.
+
+
+story #4 - fire drill
+
+user PP
+
+PP has performed a fire drill and wishes to log it in the SDL.  Penny opens an old
+SDL email and clicks the link.  She authenticates and gets the default drills
+list page.  PP clicks a navbar link titled 'log a drill' and gets the drill
+logging page.  PP selects her classroom name from a list, then the drill type.
+She correctly enters the date she performed the drill using a super slick date
+entry control then hits the 'submit' button.  She gets returned to the
+ubiquitous drills list page and a message is printed in the alerts area
+confirming her drill has been logged.
+
+
+story #5 - new teacher
+
+user PP
+
+PP needs to create an SDL user account for her assistant.  PP hits the SDL page,
+authenticates, gets the default page.  She clicks the 'create new user' link in
+the navbar and gets the create user page.  She's prompted for and enters the
+new user's name & email address.  She gets the drills list page with an alert
+message stating she's been successful.  An email is sent to the new user giving
+a link to SDL and credentials maybe?
+
+
+story #6 - change user info / Penny retires
+story #7 - new classroom
+story #8 - edit classroom
