@@ -69,7 +69,7 @@ authenticates, gets the default page.  She clicks the 'create new user' link in
 the navbar and gets the create user page.  She's prompted for and enters the
 new user's name & email address.  She gets the drills list page with an alert
 message stating she's been successful.  An email is sent to the new user giving
-a link to SDL and credentials maybe?
+a link to SDL and temp password maybe?
 
 
 story #6 - change user info / Penny retires
