@@ -46,3 +46,9 @@ TODO:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+* features to add for classwork:
+  * complete unit tests
+  * OAuth - google integration
+  * 3rd party email service for notifications
+  * integrate with google docs for outputting drills in spreadsheet
