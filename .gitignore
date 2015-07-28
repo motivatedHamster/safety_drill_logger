@@ -19,3 +19,7 @@
 # Ignore secrets
 /config/secrets.yml
 
+# Ignore IDE files
+/.idea
+/.ruby-version
+/.ruby-gemset
