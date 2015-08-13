@@ -60,3 +60,6 @@ end
 gem 'kaminari'
 
 gem 'bootstrap-sass'
+
+gem 'omniauth-google-oauth2'
+gem 'certified'

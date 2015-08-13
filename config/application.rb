@@ -6,6 +6,15 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Configure Google
+if Rails.env == 'production'
+  GOOGLE = {client_id: ENV['GOOGLE_CLIENT_ID'], client_secret: ENV['GOOGLE_CLIENT_SECRET']}
+else
+  GOOGLE = YAML.load(File.read(File.expand_path('../google.yml', __FILE__)))
+  GOOGLE.merge! GOOGLE.fetch(Rails.env, {})
+  GOOGLE.symbolize_keys!
+end
+
 module SafetyDrillLogger
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
