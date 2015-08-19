@@ -63,3 +63,5 @@ gem 'bootstrap-sass'
 
 gem 'omniauth-google-oauth2'
 gem 'certified'
+
+gem 'bootstrap-generators'
