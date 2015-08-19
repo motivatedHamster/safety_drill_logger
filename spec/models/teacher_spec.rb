@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Teacher, type: :model do
   it "has a name" do
-    expect(subject).to have_attribute(name:)
+    expect(subject).to have_attribute(:name)
   end
   
   it "has an email" do
-    expect(subject).to have_attribute(email:)
+    expect(subject).to have_attribute(:email)
   end
   
   it "is valid with a name and email" do
