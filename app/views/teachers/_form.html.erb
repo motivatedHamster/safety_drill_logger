@@ -1,0 +1,10 @@
+<%= form_for(@teacher) do |t| %>
+
+  <div class="field">
+    <%= t.name :name %><br>
+    <%= t.email :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

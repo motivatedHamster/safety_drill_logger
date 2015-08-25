@@ -41,7 +41,11 @@ TODO:
 * need to build an email that lists all drills along with current deadlines for each & link to main page
   * need to also prompt for drills that are missing dates and full/empty info
 
-* do we need to link user accounts to a specific teacher model?  I think no.
+
+* need to add a column on drills page with edit link
+* need page for creating new teachers
+* need page for creating new classrooms & adding/editing dependent drill types
+
 
 
 Please feel free to use a different markup language if you do not plan to run
