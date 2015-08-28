@@ -1,0 +1,20 @@
+<div class="page-header">
+  <%= link_to drill_types_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_drill_type_path(@drill_type), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show drill_type</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @drill_type.name %></dd>
+
+  <dt>Required frequency:</dt>
+  <dd><%= @drill_type.required_frequency %></dd>
+
+</dl>

@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to new_drill_type_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Drill type
+  <% end %>
+  <h1>Listing drill_types</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Name</th>
+            <th>Required frequency</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @drill_types) do |drill_type| %>
+            <td><%= drill_type.name %></td>
+            <td><%= drill_type.required_frequency %></td>
+            <td><%= link_to 'Show', drill_type %></td>
+        <td><%= link_to 'Edit', edit_drill_type_path(drill_type) %></td>
+        <td><%= link_to 'Destroy', drill_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

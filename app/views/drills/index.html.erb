@@ -1,5 +1,29 @@
-<%= datagrid_form_for @grid, :method => :get, :url => drills_path %>
+<div class="page-header">
+  <%= link_to new_drill_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Drill
+  <% end %>
+  <h1>Listing drills</h1>
+</div>
 
-<%= paginate(@grid.assets) %>
-<%= datagrid_table @grid %>
-<%= paginate(@grid.assets) %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Date performed</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @drills) do |drill| %>
+            <td><%= drill.date_performed %></td>
+            <td><%= link_to 'Show', drill %></td>
+        <td><%= link_to 'Edit', edit_drill_path(drill) %></td>
+        <td><%= link_to 'Destroy', drill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

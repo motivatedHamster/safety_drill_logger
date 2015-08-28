@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   resources :drills
+  resources :drill_types
   resources :teachers
+  resources :classrooms
+
+  get 'search', to: 'drills#search', as: :search
+
   # devise with omniauth
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
 
@@ -10,7 +15,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'home#index'
-  root 'drills#index'
+  root 'drills#search'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
