@@ -14,4 +14,20 @@
   <dt>Name:</dt>
   <dd><%= @classroom.name %></dd>
 
+
+  <dt>Drills:</dt>
+  <dd><%= @classroom.drills %></dd>
+
+
+  <dt>Drill types:</dt>
+  <dd>
+    <% @classroom.drill_types.each do |drill_type| %>
+        <%= drill_type.name %><br />
+    <% end %>
+  </dd>
+
+
+  <dt>Teacher:</dt>
+  <dd><%= @classroom.teacher.name %></dd>
+
 </dl>
