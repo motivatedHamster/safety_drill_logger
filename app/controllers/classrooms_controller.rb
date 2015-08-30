@@ -15,12 +15,12 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/new
   def new
     @classroom = Classroom.new
-    @teachers = Teacher.all
+    @teacher_options = Teacher.all.map{|t| [ t.name, t.id ] }
   end
 
   # GET /classrooms/1/edit
   def edit
-    @teachers = Teacher.all
+    @teacher_options = Teacher.all.map{|t| [ t.name, t.id ] }
   end
 
   # POST /classrooms

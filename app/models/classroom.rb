@@ -6,7 +6,7 @@ class Classroom < ActiveRecord::Base
   has_many :drill_types, dependent: :destroy
   belongs_to :teacher
   accepts_nested_attributes_for :drill_types
-  accepts_nested_attributes_for :teachers
+  accepts_nested_attributes_for :teacher
 
   def needs_drill?(drill_type)
     # return true if drill of drill_type has not occurred within current frequency
