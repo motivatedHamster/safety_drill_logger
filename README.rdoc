@@ -43,13 +43,16 @@ TODO:
     * maybe a page that lets you set dates for the current quarter?
 
 
-* need to add a column on drills page with edit link
+* need to add a column on drills datagrid page with edit link
+* need to add 'new drill' on drills datagrid page
 x need page for creating new teachers
-* need page for creating new classrooms & adding/editing dependent drill types
+x need page for creating new classrooms & adding/editing dependent drill types
 * remove relationship between teachers & drills?
   * no: (drills point to drill_types which points to classroom which points to teachers, but teachers can change over time & this needs to be a record of who actually did the drill)
   * unless maybe we change the teacher_id column to a teacher_name text field?  would we lose the ability to search on teacher?  does this even matter?
 * remove relationship between drills & classroom? (drills points to drill_types which points to classroom)
+x add drill due date to datagrid page
+* order drills on datagrid page by newest first? https://github.com/bogdan/datagrid/wiki/Columns#ordering
 
 
 Please feel free to use a different markup language if you do not plan to run

@@ -75,6 +75,6 @@ class DrillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drill_params
-      params.require(:drill).permit(:date_performed)
+      params.require(:drill).permit(:date_performed, :date_due, :created_at)
     end
 end
