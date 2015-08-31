@@ -18,7 +18,7 @@
   <dt>Drill types:</dt>
   <dd>
     <% @classroom.drill_types.each do |drill_type| %>
-        <%= drill_type.name %> drill held <%= drill_type.required_frequency %><br />
+        <%= drill_type.name %> drill, held <%= drill_type.required_frequency %><br />
     <% end %>
   </dd>
 

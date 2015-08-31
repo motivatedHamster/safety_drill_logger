@@ -24,7 +24,7 @@
         <td><%= classroom.name %></td>
         <td>
         <% classroom.drill_types.each do |drill_type| %>
-            <%= drill_type.name %><br />
+            <%= drill_type.name %> drill, held <%= drill_type.required_frequency %><br />
         <% end %>
         </td>
         <td><%= classroom.teacher.name %></td>

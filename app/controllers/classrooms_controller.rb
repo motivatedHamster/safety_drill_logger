@@ -78,7 +78,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def classroom_params
-      params.require(:classroom).permit(:name,
+      params.require(:classroom).permit(:name, :teacher_id,
         :drill_types_attributes => [:id, :name, :required_frequency]
       )
     end
