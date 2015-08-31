@@ -15,10 +15,11 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/new
   def new
     @classroom = Classroom.new
+    @classroom.drill_types = [ DrillType.new, DrillType.new ]
     @teacher_options = Teacher.all.map{|t| [ t.name, t.id ] }
     # weekly monthly yearly quarterly twice_yearly
-    #@drill_type_frequency_options = [["weekly","weekly"],["monthly","monthly"],["yearly","yearly"],["quarterly","quarterly"],["twice_yearly","twice_yearly"]]
     # might need to implement this as a static table in the db?
+    #@drill_type_frequency_options = [["weekly","weekly"],["monthly","monthly"],["yearly","yearly"],["quarterly","quarterly"],["twice_yearly","twice_yearly"]]
   end
 
   # GET /classrooms/1/edit
