@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813025641) do
+ActiveRecord::Schema.define(version: 20150831204622) do
 
   create_table "classrooms", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -33,12 +33,13 @@ ActiveRecord::Schema.define(version: 20150813025641) do
   add_index "drill_types", ["classroom_id"], name: "index_drill_types_on_classroom_id"
 
   create_table "drills", force: :cascade do |t|
-    t.date     "date_performed", null: false
+    t.date     "date_performed"
     t.integer  "teacher_id"
     t.integer  "classroom_id"
     t.integer  "drill_type_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.date     "date_due"
   end
 
   add_index "drills", ["classroom_id"], name: "index_drills_on_classroom_id"
