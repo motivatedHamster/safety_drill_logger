@@ -5,8 +5,10 @@ class Classroom < ActiveRecord::Base
   # ex: one classroom only has to perform fire drills quarterly while the other classrooms have to perform them monthly
   has_many :drill_types, dependent: :destroy
   belongs_to :teacher
-  accepts_nested_attributes_for :drill_types
-  accepts_nested_attributes_for :teacher
+
+  accepts_nested_attributes_for :drill_types,
+    :allow_destroy => true,
+    :reject_if => :all_blank
 
   def needs_drill?(drill_type)
     # return true if drill of drill_type has not occurred within current frequency
