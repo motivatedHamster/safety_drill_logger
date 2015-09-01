@@ -136,3 +136,31 @@ merged views->master
 added 'pg' to Gemfile
 changed adapter in database.yml to postgresql, altered db names
 is it just that easy?
+
+
+built dropdown list for selecting classroom.teacher_id per this page: http://www.theodinproject.com/ruby-on-rails/advanced-forms
+drop down list populates OK but classroom object doesn't get a new teacher_id :(
+built nested form for editing classroom.drill_types at classrooms/#/edit/
+need to be able to add new drill_types in classrooms/new and classrooms/#/edit/
+ - Ben may help with this
+
+attempting to add due date to drills table:
+rails g migration add_date_due_to_drills date_due:date
+looks like it worked
+
+xremove ID and create date columns - removed ID, removed create date
+xneed to:
+ 	xadd due date
+	xand a drills/edit link columns to datagrid page
+		maybe instance eval? column(:completed) { completed? }
+		https://github.com/bogdan/datagrid/wiki/Columns
+		did it like this:
+			column(:id, :html => true) do |record|
+				link_to "Edit", edit_drill_path(record)
+			end
+
+need to add fields to edit/_form:
+	xdue date, xclassroom name, xdrill name, xdrill frequency, xteacher select
+xneed to add same elements to drills/#/show
+
+xneed to remove null constraint from drills.date_performed

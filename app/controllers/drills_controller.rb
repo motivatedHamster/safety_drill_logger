@@ -15,10 +15,14 @@ class DrillsController < ApplicationController
   # GET /drills/new
   def new
     @drill = Drill.new
+    @classroom_options = Classroom.all.map{ |t| [ t.name, t.id ] }
+    @drill_type_options = DrillType.all.map{ |t| [t.classroom.name + " " + t.name + " drill, happens " + t.required_frequency, t.id ] }
+    @teacher_options = Teacher.all.map{ |t| [ t.name, t.id ] }
   end
 
   # GET /drills/1/edit
   def edit
+    @teacher_options = Teacher.all.map{ |t| [ t.name, t.id ] }
   end
 
   # POST /drills
@@ -75,6 +79,6 @@ class DrillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drill_params
-      params.require(:drill).permit(:date_performed)
+      params.require(:drill).permit(:date_performed, :date_due, :teacher_id, :classroom_id, :drill_type_id)
     end
 end

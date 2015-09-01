@@ -1,5 +1,5 @@
 class ClassroomsController < ApplicationController
-  before_action :set_classroom, only: [:show, :edit, :update, :destroy]
+  before_action :set_classroom, only: [:show, :edit, :update, :destroy, :drill_types]
 
   # GET /classrooms
   # GET /classrooms.json
@@ -15,10 +15,21 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/new
   def new
     @classroom = Classroom.new
+    @classroom.drill_types = [ DrillType.new, DrillType.new ]
+    @teacher_options = Teacher.all.map{|t| [ t.name, t.id ] }
+    # weekly monthly yearly quarterly twice_yearly
+    # might need to implement this as a static table in the db?
+    #@drill_type_frequency_options = [["weekly","weekly"],["monthly","monthly"],["yearly","yearly"],["quarterly","quarterly"],["twice_yearly","twice_yearly"]]
   end
 
   # GET /classrooms/1/edit
   def edit
+    @teacher_options = Teacher.all.map{|t| [ t.name, t.id ] }
+#    if @classroom.drill_types.count == 0
+#      @classroom.drill_types = [ DrillType.new, DrillType.new ]
+#    else
+#      @classroom.drill_types = @classroom.drill_types + [ DrillType.new ]
+#    end
   end
 
   # POST /classrooms
@@ -61,6 +72,9 @@ class ClassroomsController < ApplicationController
     end
   end
 
+def drill_types
+end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_classroom
@@ -69,6 +83,8 @@ class ClassroomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def classroom_params
-      params.require(:classroom).permit(:name)
+      params.require(:classroom).permit(:name, :teacher_id,
+        :drill_types_attributes => [:id, :name, :required_frequency]
+      )
     end
 end

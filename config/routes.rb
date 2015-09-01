@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :drills
   resources :drill_types
   resources :teachers
-  resources :classrooms
+  resources :classrooms do
+    get 'drill_types', on: :member
+  end
 
   get 'search', to: 'drills#search', as: :search
 

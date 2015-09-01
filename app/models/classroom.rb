@@ -6,14 +6,18 @@ class Classroom < ActiveRecord::Base
   has_many :drill_types, dependent: :destroy
   belongs_to :teacher
 
+  accepts_nested_attributes_for :drill_types,
+    :allow_destroy => true,
+    :reject_if => :all_blank
+
   def needs_drill?(drill_type)
     # return true if drill of drill_type has not occurred within current frequency
   end
-  
+
   def deadline?(drill_type)
     # returns number of days left in current frequency if needs_drill?(drill_type) = true, otherwise returns nil
   end
-  
+
   def conduct_drill(teacher, drill_type, date_conducted)
     # creates a new drill for this classroom & adds it to the database
   end

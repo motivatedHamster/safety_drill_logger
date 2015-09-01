@@ -1,5 +1,5 @@
 <div class="page-header">
-  <%= link_to drills_path, class: 'btn btn-default' do %>
+  <%= link_to search_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
@@ -11,7 +11,16 @@
 </div>
 
 <dl class="dl-horizontal">
+  <dt>Classroom</dt>
+  <dd><%= @drill.classroom.name %></dd>
+  <dt>Drill Type</dt>
+  <dd><%= @drill.drill_type.name %></dd>
+  <dt>Frequency</dt>
+  <dd><%= @drill.drill_type.required_frequency %></dd>
+  <dt>Date due:</dt>
+  <dd><%= @drill.date_due %></dd>
   <dt>Date performed:</dt>
   <dd><%= @drill.date_performed %></dd>
-
+  <dt>Teacher:</dt>
+  <dd><%= @drill.teacher.name %></dd>
 </dl>

@@ -12,12 +12,63 @@
     </div>
   <% end %>
 
+  Note: Enter dates as YYYY-MM-DD.
+  <dl class="dl-horizontal">
+    <% if @drill.classroom.nil? %>
+      <div class="form-group">
+        <%= f.label :classroom_id, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.select(:classroom_id, @classroom_options) %>
+        </div>
+      </div>
+    <% else %>
+      <dt>Classroom</dt>
+      <dd><%= @drill.classroom.name %></dd>
+    <% end %>
+
+
+    <% if @drill.drill_type.nil? %>
+    <div class="form-group">
+      <%= f.label :drill_type_id, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.select(:drill_type_id, @drill_type_options) %>
+      </div>
+    </div>
+    <% else %>
+    <dt>Drill Type</dt>
+    <dd><%= @drill.drill_type.name %></dd>
+    <dt>Frequency</dt>
+    <dd><%= @drill.drill_type.required_frequency %></dd>
+    <% end %>
+
+
+    <% if @drill.drill_type.nil? %>
+    <% else %>
+    <% end %>
+
+  </dl>
+
+  <div class="form-group">
+    <%= f.label :date_due, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :date_due, class: "form-control" %>
+    </div>
+  </div>
+
   <div class="form-group">
     <%= f.label :date_performed, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_field :date_performed, class: "form-control" %>
     </div>
   </div>
+
+  <div class="form-group">
+    <%= f.label :teacher_id, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.select(:teacher_id, @teacher_options) %>
+    </div>
+  </div>
+
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit class: "btn btn-primary" %>
