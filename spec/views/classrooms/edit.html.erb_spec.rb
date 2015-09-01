@@ -5,6 +5,7 @@ RSpec.describe "classrooms/edit", type: :view do
     @classroom = assign(:classroom, Classroom.create!(
       :name => "MyString"
     ))
+    assign(:teacher_options, [ ["t1", :id => 1], ["t2", :id => 2] ])
   end
 
   it "renders the edit classroom form" do

@@ -5,6 +5,7 @@ RSpec.describe "classrooms/new", type: :view do
     assign(:classroom, Classroom.new(
       :name => "MyString"
     ))
+    assign(:teacher_options, [ ["t1", :id => 1], ["t2", :id => 2] ])
   end
 
   it "renders new classroom form" do
