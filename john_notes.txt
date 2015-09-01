@@ -149,12 +149,18 @@ rails g migration add_date_due_to_drills date_due:date
 looks like it worked
 
 xremove ID and create date columns - removed ID, removed create date
-need to:
+xneed to:
  	xadd due date
-	and a drills/edit link columns to datagrid page
+	xand a drills/edit link columns to datagrid page
 		maybe instance eval? column(:completed) { completed? }
 		https://github.com/bogdan/datagrid/wiki/Columns
 		did it like this:
 			column(:id, :html => true) do |record|
 				link_to "Edit", edit_drill_path(record)
 			end
+
+need to add fields to edit/_form:
+	xdue date, xclassroom name, xdrill name, xdrill frequency, xteacher select
+xneed to add same elements to drills/#/show
+
+xneed to remove null constraint from drills.date_performed

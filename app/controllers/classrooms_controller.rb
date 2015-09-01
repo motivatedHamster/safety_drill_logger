@@ -25,11 +25,11 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/1/edit
   def edit
     @teacher_options = Teacher.all.map{|t| [ t.name, t.id ] }
-    if @classroom.drill_types.count == 0
-      @classroom.drill_types = [ DrillType.new, DrillType.new ]
-    else
-      @classroom.drill_types = @classroom.drill_types + [ DrillType.new ]
-    end
+#    if @classroom.drill_types.count == 0
+#      @classroom.drill_types = [ DrillType.new, DrillType.new ]
+#    else
+#      @classroom.drill_types = @classroom.drill_types + [ DrillType.new ]
+#    end
   end
 
   # POST /classrooms
