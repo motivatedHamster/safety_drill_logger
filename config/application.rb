@@ -35,5 +35,8 @@ module SafetyDrillLogger
 
     # Configure sidekiq as our queue adapter
     config.active_job.queue_adapter = :sidekiq
+
+    # Disable Asset Pipeline
+    config.assets.enabled = false
   end
 end

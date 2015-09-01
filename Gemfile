@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -59,7 +60,7 @@ end
 
 gem 'kaminari'
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'omniauth-google-oauth2'
 gem 'certified'

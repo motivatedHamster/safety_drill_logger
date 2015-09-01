@@ -278,7 +278,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-generators
-  bootstrap-sass
+  bootstrap-sass (~> 3.3.5)
   byebug
   certified
   coffee-rails (~> 4.1.0)
