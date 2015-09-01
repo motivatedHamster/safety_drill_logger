@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20150901001535) do
     t.integer  "drill_type_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.date     "date_due"
+    t.date     "date_due",       null: false
   end
 
   add_index "drills", ["classroom_id"], name: "index_drills_on_classroom_id"

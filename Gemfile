@@ -65,3 +65,6 @@ gem 'omniauth-google-oauth2'
 gem 'certified'
 
 gem 'bootstrap-generators'
+
+gem 'sidekiq'
+gem 'sinatra', require: nil
