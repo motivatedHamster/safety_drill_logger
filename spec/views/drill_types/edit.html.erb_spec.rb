@@ -4,7 +4,8 @@ RSpec.describe "drill_types/edit", type: :view do
   before(:each) do
     @drill_type = assign(:drill_type, DrillType.create!(
       :name => "MyString",
-      :required_frequency => "MyString"
+      #:required_frequency => "MyString"
+      :required_frequency => "monthly"
     ))
   end
 

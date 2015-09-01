@@ -21,13 +21,19 @@
 
     <tbody>
       <%= content_tag_for(:tr, @classrooms) do |classroom| %>
+
         <td><%= classroom.name %></td>
         <td>
-        <% classroom.drill_types.each do |drill_type| %>
-            <%= drill_type.name %> drill, held <%= drill_type.required_frequency %><br />
-        <% end %>
+          <% if classroom.drill_types.nil? %>
+            <%= "no drill types" %>
+          <% else %>
+            <% classroom.drill_types.each do |drill_type| %>
+                <%= drill_type.name %> drill, held <%= drill_type.required_frequency %><br />
+            <% end %>
+          <% end %>
         </td>
-        <td><%= classroom.teacher.name %></td>
+
+        <td><%= classroom.teacher.nil? ? "no teacher" : classroom.teacher.name %></td>
         <td><%= link_to 'Show', classroom %></td>
         <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
         <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>

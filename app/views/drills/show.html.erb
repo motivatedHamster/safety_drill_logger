@@ -11,16 +11,17 @@
 </div>
 
 <dl class="dl-horizontal">
+
   <dt>Classroom</dt>
-  <dd><%= @drill.classroom.name %></dd>
+  <dd><%= @drill.classroom.nil? ? "" : @drill.classroom.name %></dd>
   <dt>Drill Type</dt>
-  <dd><%= @drill.drill_type.name %></dd>
+  <dd><%= @drill.drill_type.nil? ? "" : @drill.drill_type.name %></dd>
   <dt>Frequency</dt>
-  <dd><%= @drill.drill_type.required_frequency %></dd>
+  <dd><%= @drill.drill_type.nil? ? "" : @drill.drill_type.required_frequency %></dd>
   <dt>Date due:</dt>
   <dd><%= @drill.date_due %></dd>
   <dt>Date performed:</dt>
   <dd><%= @drill.date_performed %></dd>
   <dt>Teacher:</dt>
-  <dd><%= @drill.teacher.name %></dd>
+  <dd><%= @drill.teacher.nil? ? "" : @drill.teacher.name %></dd>
 </dl>
