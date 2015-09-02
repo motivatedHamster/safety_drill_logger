@@ -24,7 +24,10 @@ RSpec.describe ClassroomsController, type: :controller do
   # Classroom. As you add validations to Classroom, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { name: "validName", teacher_id: 1 }
+    {
+      name: "validName",
+      teacher_id: 1
+    }
   }
 
   let(:invalid_attributes) {
@@ -114,7 +117,9 @@ RSpec.describe ClassroomsController, type: :controller do
         classroom = Classroom.create! valid_attributes
         put :update, {:id => classroom.to_param, :classroom => new_attributes}, valid_session
         classroom.reload
-        skip("Add assertions for updated state")
+        updated_classroom = Classroom.find(classroom.id)
+        expect(updated_classroom.name).to eq(new_attributes[:name])
+        expect(updated_classroom.teacher_id).to eq(new_attributes[:teacher_id])
       end
 
       it "assigns the requested classroom as @classroom" do
