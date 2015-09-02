@@ -71,6 +71,13 @@ class DrillsController < ApplicationController
     end
   end
 
+  def import
+  end
+
+  def process_import
+    redirect_to search_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_drill

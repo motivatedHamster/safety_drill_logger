@@ -1,0 +1,9 @@
+<div class="authform">
+  <%= form_tag({action: :process_import}, multipart: true) do  %>
+    <div class="form-group">
+      <%= label_tag 'file', 'File to import' %>
+      <%= file_field_tag 'file' %>
+    </div>
+    <%= submit_tag 'Import', :class => 'button right' %>
+  <% end %>
+</div>
