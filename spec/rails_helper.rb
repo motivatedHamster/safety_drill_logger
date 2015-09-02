@@ -56,6 +56,7 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Devise::TestHelpers, :type => :controller
   config.include ControllerHelpers, :type => :controller
+  config.include ControllerHelpers, :type => :request
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation

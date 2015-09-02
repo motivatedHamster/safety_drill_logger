@@ -24,11 +24,23 @@ RSpec.describe DrillsController, type: :controller do
   # Drill. As you add validations to Drill, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {}
+    {
+      date_performed: Date::strptime("04-27-2015", "%m-%d-%Y"),
+      teacher_id: 1,
+      classroom_id: 1,
+      drill_type_id: 1,
+      date_due: Date::strptime("04-27-2015", "%m-%d-%Y")
+    }
   }
 
   let(:invalid_attributes) {
-    { sandwich: "Halumi"}
+    {
+      date_performed: "not_a_date",
+      teacher_id: "not_an_int",
+      classroom_id: "not_an_int",
+      drill_type_id: "not_an_int",
+      date_due: "not_a_date"
+    }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -107,14 +119,25 @@ RSpec.describe DrillsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          date_performed: Date::strptime("05-01-2015", "%m-%d-%Y"),
+          teacher_id: 2,
+          classroom_id: 2,
+          drill_type_id: 2,
+          date_due: Date::strptime("06-01-2015", "%m-%d-%Y")
+        }
       }
 
       it "updates the requested drill" do
         drill = Drill.create! valid_attributes
         put :update, {:id => drill.to_param, :drill => new_attributes}, valid_session
         drill.reload
-        skip("Add assertions for updated state")
+        updated_drill = Drill.find(drill.id)
+        expect(updated_drill.date_performed).to eq(new_attributes[:date_performed])
+        expect(updated_drill.teacher_id).to eq(new_attributes[:teacher_id])
+        expect(updated_drill.classroom_id).to eq(new_attributes[:classroom_id])
+        expect(updated_drill.drill_type_id).to eq(new_attributes[:drill_type_id])
+        expect(updated_drill.date_due).to eq(new_attributes[:date_due])
       end
 
       it "assigns the requested drill as @drill" do

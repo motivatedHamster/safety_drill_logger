@@ -85,9 +85,9 @@ RSpec.describe TeachersController, type: :controller do
         expect(assigns(:teacher)).to be_persisted
       end
 
-      it "redirects to the created teacher" do
+      it "redirects to the teachers index" do
         post :create, {:teacher => valid_attributes}, valid_session
-        expect(response).to redirect_to(Teacher.last)
+        expect(response).to redirect_to(teachers_path)
       end
     end
 
@@ -114,7 +114,9 @@ RSpec.describe TeachersController, type: :controller do
         teacher = Teacher.create! valid_attributes
         put :update, {:id => teacher.to_param, :teacher => new_attributes}, valid_session
         teacher.reload
-        skip("Add assertions for updated state")
+        updated_teacher = Teacher.find(teacher.id)
+        expect(updated_teacher.name).to eq(new_attributes[:name])
+        expect(updated_teacher.email).to eq(new_attributes[:email])
       end
 
       it "assigns the requested teacher as @teacher" do
@@ -123,10 +125,10 @@ RSpec.describe TeachersController, type: :controller do
         expect(assigns(:teacher)).to eq(teacher)
       end
 
-      it "redirects to the teacher" do
+      it "redirects to the teachers index" do
         teacher = Teacher.create! valid_attributes
         put :update, {:id => teacher.to_param, :teacher => valid_attributes}, valid_session
-        expect(response).to redirect_to(teacher)
+        expect(response).to redirect_to(teachers_path)
       end
     end
 

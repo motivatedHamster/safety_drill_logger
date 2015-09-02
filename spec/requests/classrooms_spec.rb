@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "Classrooms", type: :request do
+
+  before do
+    sign_in
+  end
+
   describe "GET /classrooms" do
     it "works! (now write some real specs)" do
       get classrooms_path
