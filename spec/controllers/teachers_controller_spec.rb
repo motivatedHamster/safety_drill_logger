@@ -24,17 +24,21 @@ RSpec.describe TeachersController, type: :controller do
   # Teacher. As you add validations to Teacher, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { name: "validName", email: "foo@bar.com" }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: "validName" }
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # TeachersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+
+  before do
+    sign_in
+  end
 
   describe "GET #index" do
     it "assigns all teachers as @teachers" do
@@ -103,7 +107,7 @@ RSpec.describe TeachersController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { name: "anotherValidName", email: "foo2@bar.com" }
       }
 
       it "updates the requested teacher" do

@@ -54,6 +54,11 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails'
+  gem 'capybara', '~> 2.4.0'
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+
 end
 
 

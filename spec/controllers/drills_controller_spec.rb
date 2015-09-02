@@ -24,17 +24,21 @@ RSpec.describe DrillsController, type: :controller do
   # Drill. As you add validations to Drill, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { sandwich: "Halumi"}
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # DrillsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+
+  before do
+    sign_in
+  end
 
   describe "GET #index" do
     it "assigns all drills as @drills" do
