@@ -1,0 +1,9 @@
+Dear <%= @drill.teacher.name %>:
+
+The following drill is due in 7 days or less:
+
+  * Date due: <%= @drill.drill_type.name %>
+  * Classroom: <%= @drill.classroom.name %>
+  * Drill type: <%= @drill.drill_type.name %>
+
+Please make sure you complete this drill before the date due.
