@@ -24,10 +24,7 @@ RSpec.describe ClassroomsController, type: :controller do
   # Classroom. As you add validations to Classroom, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {
-      name: "validName",
-      teacher_id: 1
-    }
+    { name: "validName", teacher_id: 1 }
   }
 
   let(:invalid_attributes) {

@@ -52,6 +52,10 @@ RSpec.describe DrillsController, type: :controller do
     sign_in
   end
 
+  before do
+    sign_in
+  end
+
   describe "GET #index" do
     it "assigns all drills as @drills" do
       drill = Drill.create! valid_attributes
