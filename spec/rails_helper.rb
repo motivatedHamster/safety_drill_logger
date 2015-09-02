@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'devise'
+require 'support/controller_helpers'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -50,4 +51,22 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  config.include FactoryGirl::Syntax::Methods
+  config.include Capybara::DSL
+  config.include Devise::TestHelpers, :type => :controller
+  config.include ControllerHelpers, :type => :controller
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
 end

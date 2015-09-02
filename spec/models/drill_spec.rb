@@ -5,7 +5,7 @@ RSpec.describe Drill, type: :model do
     expect(subject).to have_attribute(:date_performed)
   end
 
-  it "belongs_to :teacher"
-  it "belongs_to :classroom"
-  it "belongs_to :drill_type"
+  it "has date_due" do
+    expect(subject).to have_attribute(:date_due)
+  end
 end
