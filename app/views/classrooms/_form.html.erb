@@ -26,7 +26,9 @@
       <%= ff.label :name, class: "col-sm-2 control-label" %>
       <%= ff.text_field :name, class: "form-control" %>
       <%= ff.label :required_frequency, class: "col-sm-2 control-label" %>
-      <%= ff.text_field :required_frequency, class: "form-control" %>
+      <div class="col-sm-10">
+        <%= ff.select(:required_frequency, @drill_type_frequency_options) %>
+      </div>
     </div>
     <% end %>
   </div>
