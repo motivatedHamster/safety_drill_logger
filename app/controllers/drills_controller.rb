@@ -84,7 +84,7 @@ class DrillsController < ApplicationController
     csv.each do |row|
       fields = row.to_hash.symbolize_keys!
 
-      Drill.create(fields)
+      Drill.from_fields(fields)
     end
 
     redirect_to search_url

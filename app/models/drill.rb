@@ -18,7 +18,7 @@ class Drill < ActiveRecord::Base
     return [now, reminder_time].max
   end
 
-  def self.create(fields)
+  def self.from_fields(fields)
     drill = Drill.new
 
     drill.date_due = fields[:date_due].to_date
