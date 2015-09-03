@@ -6,6 +6,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'devise'
 require 'support/controller_helpers'
+require 'capybara/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -56,7 +57,6 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Devise::TestHelpers, :type => :controller
   config.include ControllerHelpers, :type => :controller
-  config.include ControllerHelpers, :type => :request
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation

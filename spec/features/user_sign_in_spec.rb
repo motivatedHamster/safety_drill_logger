@@ -1,8 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe "Classrooms", type: :request do
-
-  before do
+describe "user sign in" do
+  it "allows users to sign in after they have registered" do
     user = User.create(:email    => "test@test.com",
                        :password => "p@$sw0rd")
 
@@ -12,12 +11,7 @@ RSpec.describe "Classrooms", type: :request do
     fill_in "Password", :with => "p@$sw0rd"
 
     click_button "Sign in"
-  end
 
-  describe "GET /classrooms" do
-    it "works! (now write some real specs)" do
-      get classrooms_path
-      expect(response).to have_http_status(200)
-    end
+    expect(page).to have_content("Signed in successfully.")
   end
 end

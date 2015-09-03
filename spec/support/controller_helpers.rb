@@ -1,3 +1,5 @@
+# got this code from:
+# https://github.com/plataformatec/devise/wiki/How-To:-Stub-authentication-in-controller-specs
 module ControllerHelpers
   def sign_in(user = double('user'))
     if user.nil?
