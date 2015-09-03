@@ -1,3 +1,5 @@
+require 'csv'
+
 class DrillsController < ApplicationController
   before_action :set_drill, only: [:show, :edit, :update, :destroy]
 
@@ -75,6 +77,16 @@ class DrillsController < ApplicationController
   end
 
   def process_import
+    filename = params[:file].path
+
+    csv_text = File.read(filename)
+    csv = CSV.parse(csv_text, headers: true)
+    csv.each do |row|
+      fields = row.to_hash.symbolize_keys!
+
+      Drill.create(fields)
+    end
+
     redirect_to search_url
   end
 
@@ -88,4 +100,5 @@ class DrillsController < ApplicationController
     def drill_params
       params.require(:drill).permit(:date_performed, :date_due, :teacher_id, :classroom_id, :drill_type_id)
     end
+
 end

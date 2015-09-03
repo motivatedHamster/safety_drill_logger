@@ -17,4 +17,17 @@ class Drill < ActiveRecord::Base
 
     return [now, reminder_time].max
   end
+
+  def self.create(fields)
+    drill = Drill.new
+
+    drill.date_due = fields[:date_due].to_date
+    drill.teacher = Teacher.find_or_create(fields)
+    drill.classroom = Classroom.find_or_create(fields)
+    drill.drill_type = DrillType.find_or_create(fields)
+    drill.save!
+
+    return drill
+  end
+
 end
