@@ -1,9 +1,14 @@
 <div class="authform">
+<div class="panel panel-default">
+  <div class="panel-heading">Please select a CSV file of drills to import.</div>
+  <div class="panel-body">
   <%= form_tag({action: :process_import}, multipart: true) do  %>
     <div class="form-group">
-      <%= label_tag 'file', 'File to import' %>
+      <p></p>
       <%= file_field_tag 'file' %>
     </div>
     <%= submit_tag 'Import', :class => 'button right' %>
   <% end %>
+  </div>
+</div>
 </div>
