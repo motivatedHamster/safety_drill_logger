@@ -6,4 +6,19 @@ class DrillType < ActiveRecord::Base
   
   # required_frequency should be one of: weekly, monthly, yearly, quarterly, twice_yearly
   # more flexible implementation would have frequency per period
+
+  def self.find_or_create(fields)
+    name = fields[:drill_type]
+
+    drill_type = DrillType.find_by_name(name)
+    if !drill_type
+      drill_type = DrillType.new
+      drill_type.name = name
+      drill_type.required_frequency = fields[:required_frequency]
+      drill_type.save!
+    end
+
+    return drill_type
+  end
+
 end

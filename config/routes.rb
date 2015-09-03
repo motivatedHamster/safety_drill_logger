@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   end
 
   get 'search', to: 'drills#search', as: :search
+  get 'import', to: 'drills#import', as: :import
+  post 'process_import', to: 'drills#process_import', as: :process_import
 
   # devise with omniauth
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}

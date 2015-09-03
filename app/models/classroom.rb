@@ -21,4 +21,18 @@ class Classroom < ActiveRecord::Base
   def conduct_drill(teacher, drill_type, date_conducted)
     # creates a new drill for this classroom & adds it to the database
   end
+
+  def self.find_or_create(fields)
+    name = fields[:classroom]
+
+    classroom = Classroom.find_by_name(name)
+    if !classroom
+      classroom = Classroom.new
+      classroom.name = name
+      classroom.save!
+    end
+
+    return classroom
+  end
+
 end
